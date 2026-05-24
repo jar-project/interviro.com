@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PT. Interviro Pacific Indonesia - Konsultan Perizinan Lingkungan</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<style>
+/* ===== HERO ===== */
+.hero {
+  position: relative; width: 100%; height: 100vh; min-height: 600px;
+  overflow: hidden; display: flex; align-items: flex-end; padding-bottom: 90px;
+}
+.hero-bg {
+  position: absolute; inset: 0;
+  background-image: url('https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=1800&q=85');
+  background-size: cover; background-position: center;
+  animation: slowZoom 14s ease forwards;
+}
+@keyframes slowZoom { from { transform: scale(1.05); } to { transform: scale(1); } }
+.hero-overlay {
+  position: absolute; inset: 0;
+  background:
+    linear-gradient(to right, rgba(4,44,83,0.90) 0%, rgba(4,44,83,0.60) 45%, rgba(4,44,83,0.10) 100%),
+    linear-gradient(to top, rgba(4,44,83,0.70) 0%, transparent 55%);
+}
+.hero-content { position: relative; z-index: 2; }
+.hero-badge {
+  display: inline-flex; align-items: center; gap: 10px;
+  font-size: 11px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase;
+  color: var(--blue-100); margin-bottom: 22px;
+  opacity: 0; animation: fadeUp 0.6s ease 0.2s forwards;
+}
+.hero-badge-line { width: 30px; height: 2px; background: var(--blue-100); border-radius: 2px; }
+.hero-title {
+  font-size: clamp(2.2rem, 5vw, 3.8rem); font-weight: 900; color: var(--white);
+  line-height: 1.1; letter-spacing: -0.02em; margin-bottom: 20px; max-width: 620px;
+  opacity: 0; animation: fadeUp 0.6s ease 0.4s forwards;
+}
+.hero-title .hl { color: #5BC8F5; }
+.hero-desc {
+  font-size: clamp(14px, 1.6vw, 16px); font-weight: 500;
+  color: rgba(255,255,255,0.78); line-height: 1.8; max-width: 480px; margin-bottom: 38px;
+  opacity: 0; animation: fadeUp 0.6s ease 0.6s forwards;
+}
+.hero-btns { display: flex; gap: 14px; flex-wrap: wrap; opacity: 0; animation: fadeUp 0.6s ease 0.8s forwards; }
+.hero-btn-main {
+  display: inline-block; background: var(--blue-500); color: var(--white);
+  padding: 14px 30px; border-radius: 8px; font-size: 14px; font-weight: 700;
+  letter-spacing: 0.04em; transition: background var(--tr), transform var(--tr), box-shadow var(--tr);
+}
+.hero-btn-main:hover { background: var(--blue-700); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(4,44,83,0.4); }
+.hero-btn-sec {
+  display: inline-flex; align-items: center; gap: 8px;
+  border: 2px solid rgba(255,255,255,0.6); color: var(--white);
+  padding: 13px 28px; border-radius: 8px; font-size: 14px; font-weight: 700;
+  letter-spacing: 0.04em; transition: background var(--tr), border-color var(--tr);
+}
+.hero-btn-sec:hover { background: rgba(255,255,255,0.12); border-color: var(--white); }
+.scroll-hint {
+  position: absolute; bottom: 28px; left: 50%; transform: translateX(-50%);
+  z-index: 2; display: flex; flex-direction: column; align-items: center; gap: 6px;
+  color: rgba(255,255,255,0.45); font-size: 10px; font-weight: 600;
+  letter-spacing: 0.14em; text-transform: uppercase;
+  opacity: 0; animation: fadeIn 1s ease 1.2s forwards;
+}
+.scroll-dot {
+  width: 20px; height: 32px; border: 2px solid rgba(255,255,255,0.3);
+  border-radius: 12px; display: flex; justify-content: center; padding-top: 5px;
+}
+.scroll-dot::before {
+  content: ''; width: 4px; height: 7px; background: rgba(255,255,255,0.55);
+  border-radius: 2px; animation: scrollBounce 1.8s ease infinite;
+}
+@keyframes scrollBounce { 0%,100%{transform:translateY(0);opacity:1} 75%{transform:translateY(8px);opacity:0.2} }
+@keyframes fadeUp { from{opacity:0;transform:translateY(22px)} to{opacity:1;transform:translateY(0)} }
+@keyframes fadeIn { from{opacity:0} to{opacity:1} }
+
+/* ===== ABOUT ===== */
+.about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 72px; align-items: center; }
+.about-img-side { position: relative; }
+.about-img-main { width: 100%; aspect-ratio: 4/5; object-fit: cover; border-radius: 16px; }
+.about-img-secondary {
+  position: absolute; bottom: -28px; right: -28px; width: 48%; aspect-ratio: 4/3;
+  object-fit: cover; border-radius: 12px; border: 5px solid var(--white);
+  box-shadow: 0 12px 32px rgba(4,44,83,0.18);
+}
+.about-badge-float {
+  position: absolute; top: 28px; left: -24px;
+  background: var(--blue-700); color: var(--white);
+  border-radius: 14px; padding: 18px 22px; text-align: center;
+  box-shadow: 0 10px 28px rgba(4,44,83,0.28); z-index: 2;
+}
+.about-badge-num { display: block; font-size: 2.2rem; font-weight: 900; line-height: 1; letter-spacing: -0.02em; }
+.about-badge-label { display: block; font-size: 11px; font-weight: 600; opacity: 0.85; margin-top: 4px; }
+.dot-grid {
+  position: absolute; bottom: -44px; left: -32px; width: 120px; height: 120px;
+  background-image: radial-gradient(circle, #93C5FD 1.5px, transparent 1.5px);
+  background-size: 14px 14px; opacity: 0.4; z-index: 0;
+}
+.about-desc { font-size: 15px; font-weight: 500; color: var(--gray-600); line-height: 1.85; margin-bottom: 14px; }
+.about-stats {
+  display: grid; grid-template-columns: repeat(3,1fr); gap: 16px;
+  margin: 32px 0; padding: 24px 0;
+  border-top: 1px solid var(--gray-200); border-bottom: 1px solid var(--gray-200);
+}
+.stat-num { display: block; font-size: 1.9rem; font-weight: 900; color: var(--blue-700); letter-spacing: -0.02em; line-height: 1; margin-bottom: 5px; }
+.stat-label { font-size: 11.5px; font-weight: 600; color: var(--gray-600); }
+.about-checklist { display: flex; flex-direction: column; gap: 10px; margin-bottom: 32px; }
+.about-checklist li {
+  display: flex; align-items: center; gap: 10px;
+  font-size: 14px; font-weight: 600; color: var(--gray-900);
+}
+.about-checklist li::before {
+  content: ''; width: 20px; height: 20px; border-radius: 50%;
+  background: var(--blue-50); border: 2px solid var(--blue-700); flex-shrink: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12'%3E%3Cpath d='M2 6l3 3 5-5' stroke='%23185FA5' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' fill='none'/%3E%3C/svg%3E");
+  background-repeat: no-repeat; background-position: center; background-size: 12px;
+}
+
+/* ===== LAYANAN GRID ===== */
+.layanan-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 16px; }
+.layanan-card {
+  position: relative; border-radius: var(--radius); overflow: hidden;
+  aspect-ratio: 4/3; display: block;
+  transition: transform var(--tr), box-shadow var(--tr);
+}
+.layanan-card:hover { transform: translateY(-4px); box-shadow: 0 16px 36px rgba(4,44,83,0.2); }
+.layanan-card img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.45s ease; }
+.layanan-card:hover img { transform: scale(1.07); }
+.layanan-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(to top, rgba(4,44,83,0.88) 0%, rgba(4,44,83,0.35) 50%, rgba(4,44,83,0.08) 100%);
+  transition: background var(--tr);
+}
+.layanan-card:hover .layanan-overlay { background: linear-gradient(to top, rgba(4,44,83,0.95) 0%, rgba(4,44,83,0.55) 60%, rgba(4,44,83,0.18) 100%); }
+.layanan-label { position: absolute; bottom: 0; left: 0; right: 0; padding: 16px 18px; z-index: 2; }
+.layanan-label h3 { font-size: 15px; font-weight: 800; color: var(--white); line-height: 1.3; }
+.layanan-arrow {
+  position: absolute; top: 14px; right: 14px; width: 32px; height: 32px;
+  background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.3);
+  border-radius: 50%; display: flex; align-items: center; justify-content: center;
+  color: var(--white); font-size: 14px; z-index: 2;
+  opacity: 0; transform: translateY(-6px); transition: opacity var(--tr), transform var(--tr);
+}
+.layanan-card:hover .layanan-arrow { opacity: 1; transform: translateY(0); }
+
+/* ===== CTA BANNER ===== */
+.section-cta { position: relative; min-height: 420px; display: flex; align-items: center; overflow: hidden; }
+.cta-bg {
+  position: absolute; inset: 0;
+  background-image: url('https://images.unsplash.com/photo-1621905251189-08b45d6a269e?w=1800&q=85');
+  background-size: cover; background-position: center;
+}
+.cta-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(to right, rgba(4,44,83,0.88) 0%, rgba(4,44,83,0.65) 50%, rgba(4,44,83,0.25) 100%);
+}
+.cta-content { position: relative; z-index: 2; padding: 80px 0; max-width: 580px; }
+.cta-title { font-size: clamp(1.8rem,3.5vw,2.8rem); font-weight: 900; color: var(--white); line-height: 1.15; letter-spacing: -0.02em; margin-bottom: 16px; }
+.cta-desc { font-size: 15px; font-weight: 500; color: rgba(255,255,255,0.8); line-height: 1.75; margin-bottom: 36px; max-width: 440px; }
+.cta-btn {
+  display: inline-block; background: var(--blue-500); color: var(--white);
+  padding: 15px 34px; border-radius: 8px; font-size: 14px; font-weight: 700;
+  letter-spacing: 0.05em; text-transform: uppercase;
+  transition: background var(--tr), transform var(--tr), box-shadow var(--tr);
+}
+.cta-btn:hover { background: var(--white); color: var(--blue-700); transform: translateY(-2px); box-shadow: 0 10px 28px rgba(0,0,0,0.2); }
+
+@media(max-width:900px){
+  .about-grid{grid-template-columns:1fr;gap:80px;}
+  .about-img-side{max-width:480px;margin:0 auto;}
+  .about-badge-float{left:-12px;}
+}
+@media(max-width:768px){
+  .hero{align-items:center;padding-bottom:0;}
+  .scroll-hint{display:none;}
+  .layanan-grid{grid-template-columns:repeat(2,1fr);}
+  .about-img-secondary{display:none;}
+}
+@media(max-width:480px){
+  .layanan-grid{grid-template-columns:1fr;}
+  .about-stats{grid-template-columns:1fr 1fr;}
+}
+</style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar transparent" id="navbar">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">
+      <img src="logo.png" alt="Interviro">
+      <span class="nav-logo-text">Interviro</span>
+    </a>
+    <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html" class="active">Beranda</a></li>
+      <li><a href="tentang.html">Tentang Kami</a></li>
+      <li class="nav-dropdown">
+        <a href="layanan.html">Layanan &#8964;</a>
+        <div class="nav-dropdown-menu">
+          <a href="layanan.html#amdal">AMDAL</a>
+          <a href="layanan.html#ukl-upl">UKL/UPL</a>
+          <a href="layanan.html#delh">DELH/DPLH</a>
+          <a href="layanan.html#pertek-ipal">Pertek IPAL</a>
+          <a href="layanan.html#pertek-emisi">Pertek Emisi</a>
+          <a href="layanan.html#rintek">RINTEK</a>
+          <a href="layanan.html#andalalin">ANDALALIN</a>
+        </div>
+      </li>
+      <li><a href="blog.html">Blog</a></li>
+      <li><a href="kontak.html">Kontak</a></li>
+    </ul>
+    <a href="https://wa.me/628123456789" target="_blank" class="nav-cta">Konsultasi Gratis</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content container">
+    <div class="hero-badge"><span class="hero-badge-line"></span>PT. Interviro Pacific Indonesia</div>
+    <h1 class="hero-title">Solusi Terpadu<br><span class="hl">Perizinan Lingkungan</span><br>untuk Bisnis Anda</h1>
+    <p class="hero-desc">Kami hadir sebagai mitra strategis bisnis Anda dalam memenuhi setiap kebutuhan perizinan lingkungan dari AMDAL hingga Audit Migas dengan proses yang efisien dan akurat.</p>
+    <div class="hero-btns">
+      <a href="https://wa.me/628123456789" target="_blank" class="hero-btn-main">Konsultasi Gratis</a>
+      <a href="layanan.html" class="hero-btn-sec">Lihat Layanan &#8594;</a>
+    </div>
+  </div>
+  <div class="scroll-hint"><div class="scroll-dot"></div>Scroll</div>
+</section>
+
+<!-- TENTANG KAMI -->
+<section class="section-pad">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-img-side" data-fade>
+        <div class="dot-grid"></div>
+        <div class="about-badge-float">
+          <span class="about-badge-num">12+</span>
+          <span class="about-badge-label">Tahun Berpengalaman</span>
+        </div>
+        <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=800&q=80" alt="Tim Interviro" class="about-img-main">
+        <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=600&q=80" alt="Konsultasi" class="about-img-secondary">
+      </div>
+      <div data-fade data-delay="150">
+        <div class="section-tag">Tentang Kami</div>
+        <h2 class="section-title">Konsultan Lingkungan<br><span>Terpercaya di Indonesia</span></h2>
+        <p class="about-desc">PT. Interviro Pacific Indonesia adalah perusahaan konsultan perizinan lingkungan yang telah berpengalaman lebih dari satu dekade dalam membantu berbagai industri memenuhi kepatuhan regulasi lingkungan hidup di Indonesia.</p>
+        <p class="about-desc">Didukung tim tenaga ahli bersertifikat dan pemahaman mendalam terhadap peraturan KLHK, kami siap menjadi mitra strategis bisnis Anda dari tahap perencanaan hingga penerbitan izin.</p>
+        <div class="about-stats">
+          <div class="stat-item"><span class="stat-num">500+</span><span class="stat-label">Proyek Selesai</span></div>
+          <div class="stat-item"><span class="stat-num">200+</span><span class="stat-label">Klien Aktif</span></div>
+          <div class="stat-item"><span class="stat-num">34</span><span class="stat-label">Provinsi Terlayani</span></div>
+        </div>
+        <ul class="about-checklist">
+          <li>Tim tenaga ahli bersertifikat resmi KLHK</li>
+          <li>Proses transparan dari awal hingga izin terbit</li>
+          <li>Layanan end-to-end untuk semua jenis perizinan</li>
+          <li>Jangkauan nasional di seluruh Indonesia</li>
+        </ul>
+        <a href="tentang.html" class="btn-primary">Selengkapnya Tentang Kami</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LAYANAN -->
+<section class="section-pad bg-light">
+  <div class="container">
+    <div class="section-header" data-fade>
+      <div class="section-tag">Layanan Kami</div>
+      <h2 class="section-title">Kebutuhan <span>Perizinan Lingkungan</span><br>yang Kami Layani</h2>
+    </div>
+    <div class="layanan-grid">
+      <a href="https://wa.me/628123456789?text=Halo,%20saya%20ingin%20konsultasi%20mengenai%20AMDAL" target="_blank" class="layanan-card" data-fade>
+        <img src="https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=600&q=80" alt="AMDAL">
+        <div class="layanan-overlay"></div><div class="layanan-arrow">↗</div>
+        <div class="layanan-label"><h3>AMDAL</h3></div>
+      </a>
+      <a href="https://wa.me/628123456789?text=Halo,%20saya%20ingin%20konsultasi%20mengenai%20UKL/UPL" target="_blank" class="layanan-card" data-fade data-delay="80">
+        <img src="https://images.unsplash.com/photo-1611273426858-450d8e3c9fce?w=600&q=80" alt="UKL/UPL">
+        <div class="layanan-overlay"></div><div class="layanan-arrow">↗</div>
+        <div class="layanan-label"><h3>UKL/UPL</h3></div>
+      </a>
+      <a href="https://wa.me/628123456789?text=Halo,%20saya%20ingin%20konsultasi%20mengenai%20DELH/DPLH" target="_blank" class="layanan-card" data-fade data-delay="160">
+        <img src="https://images.unsplash.com/photo-1573164713988-8665fc963095?w=600&q=80" alt="DELH/DPLH">
+        <div class="layanan-overlay"></div><div class="layanan-arrow">↗</div>
+        <div class="layanan-label"><h3>DELH/DPLH</h3></div>
+      </a>
+      <a href="https://wa.me/628123456789?text=Halo,%20saya%20ingin%20konsultasi%20mengenai%20Pertek%20IPAL" target="_blank" class="layanan-card" data-fade data-delay="240">
+        <img src="https://images.unsplash.com/photo-1545259741-2ea3ebf61fa3?w=600&q=80" alt="Pertek IPAL">
+        <div class="layanan-overlay"></div><div class="layanan-arrow">↗</div>
+        <div class="layanan-label"><h3>Pertek IPAL</h3></div>
+      </a>
+      <a href="https://wa.me/628123456789?text=Halo,%20saya%20ingin%20konsultasi%20mengenai%20Pertek%20Emisi" target="_blank" class="layanan-card" data-fade>
+        <img src="https://images.unsplash.com/photo-1586864387967-d02ef85d93e8?w=600&q=80" alt="Pertek Emisi">
+        <div class="layanan-overlay"></div><div class="layanan-arrow">↗</div>
+        <div class="layanan-label"><h3>Pertek Emisi</h3></div>
+      </a>
+      <a href="https://wa.me/628123456789?text=Halo,%20saya%20ingin%20konsultasi%20mengenai%20RINTEK" target="_blank" class="layanan-card" data-fade data-delay="80">
+        <img src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?w=600&q=80" alt="RINTEK">
+        <div class="layanan-overlay"></div><div class="layanan-arrow">↗</div>
+        <div class="layanan-label"><h3>Rincian Teknis (RINTEK)</h3></div>
+      </a>
+      <a href="https://wa.me/628123456789?text=Halo,%20saya%20ingin%20konsultasi%20mengenai%20ANDALALIN" target="_blank" class="layanan-card" data-fade data-delay="160">
+        <img src="https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?w=600&q=80" alt="ANDALALIN">
+        <div class="layanan-overlay"></div><div class="layanan-arrow">↗</div>
+        <div class="layanan-label"><h3>ANDALALIN</h3></div>
+      </a>
+      <a href="https://wa.me/628123456789?text=Halo,%20saya%20ingin%20konsultasi%20mengenai%20Perancangan%20Unit%20IPAL" target="_blank" class="layanan-card" data-fade data-delay="240">
+        <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80" alt="Perancangan IPAL">
+        <div class="layanan-overlay"></div><div class="layanan-arrow">↗</div>
+        <div class="layanan-label"><h3>Perancangan Unit IPAL</h3></div>
+      </a>
+    </div>
+    <div style="text-align:center;margin-top:44px;" data-fade>
+      <a href="layanan.html" class="btn-outline-blue">Lihat Semua Layanan</a>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="section-cta">
+  <div class="cta-bg"></div>
+  <div class="cta-overlay"></div>
+  <div class="container">
+    <div class="cta-content" data-fade>
+      <h2 class="cta-title">Izin Lingkungan Mudah dan Cepat Bersama Ahlinya</h2>
+      <p class="cta-desc">Interviro Pacific Indonesia siap mengurus seluruh perizinan lingkungan Anda dari awal hingga tuntas.</p>
+      <a href="https://wa.me/628123456789" target="_blank" class="cta-btn">Hubungi Kami</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-logo-wrap">
+          <img src="logo.png" alt="Interviro">
+          <span class="footer-logo-text">Interviro</span>
+        </div>
+        <p class="footer-desc">PT. Interviro Pacific Indonesia adalah mitra terpercaya dalam pengurusan perizinan lingkungan di seluruh Indonesia.</p>
+        <a href="mailto:kontak@interviro.com" class="footer-email">
+          <span class="footer-email-icon">✉</span>kontak@interviro.com
+        </a>
+      </div>
+      <div class="footer-nav"><h4>Navigasi</h4><ul>
+        <li><a href="index.html">Beranda</a></li><li><a href="tentang.html">Tentang Kami</a></li>
+        <li><a href="layanan.html">Layanan</a></li><li><a href="blog.html">Blog</a></li>
+        <li><a href="kontak.html">Kontak</a></li>
+      </ul></div>
+      <div class="footer-nav"><h4>Layanan</h4><ul>
+        <li><a href="layanan.html#amdal">AMDAL</a></li><li><a href="layanan.html#ukl-upl">UKL/UPL</a></li>
+        <li><a href="layanan.html#delh">DELH/DPLH</a></li><li><a href="layanan.html#pertek-ipal">Pertek IPAL</a></li>
+        <li><a href="layanan.html#pertek-emisi">Pertek Emisi</a></li><li><a href="layanan.html#andalalin">ANDALALIN</a></li>
+      </ul></div>
+      <div class="footer-newsletter"><h4>Newsletter</h4>
+        <p>Dapatkan update regulasi dan info perizinan terbaru langsung di email Anda.</p>
+        <div class="nl-form">
+          <input type="email" placeholder="Masukkan email Anda">
+          <button type="button">Berlangganan</button>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2025 PT. Interviro Pacific Indonesia. All rights reserved.</p>
+      <div class="footer-bottom-links">
+        <a href="#">Kebijakan Privasi</a><a href="#">Syarat dan Ketentuan</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- WA FLOAT -->
+<a href="https://wa.me/628123456789" target="_blank" class="wa-float" aria-label="Chat WhatsApp">
+  <div class="wa-pulse"></div>
+  <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
+
+<script src="main.js"></script>
+</body>
+</html>

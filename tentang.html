@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tentang Kami - PT. Interviro Pacific Indonesia</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<style>
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:center;}
+.about-img-main{width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:16px;}
+.about-img-secondary{position:absolute;bottom:-28px;right:-28px;width:48%;aspect-ratio:4/3;object-fit:cover;border-radius:12px;border:5px solid var(--white);box-shadow:0 12px 32px rgba(4,44,83,0.18);}
+.about-img-side{position:relative;}
+.about-badge-float{position:absolute;top:28px;left:-24px;background:var(--blue-700);color:var(--white);border-radius:14px;padding:18px 22px;text-align:center;box-shadow:0 10px 28px rgba(4,44,83,0.28);z-index:2;}
+.about-badge-num{display:block;font-size:2.2rem;font-weight:900;line-height:1;letter-spacing:-0.02em;}
+.about-badge-label{display:block;font-size:11px;font-weight:600;opacity:0.85;margin-top:4px;}
+.dot-grid{position:absolute;bottom:-44px;left:-32px;width:120px;height:120px;background-image:radial-gradient(circle,#93C5FD 1.5px,transparent 1.5px);background-size:14px 14px;opacity:0.4;z-index:0;}
+.about-desc{font-size:15px;font-weight:500;color:var(--gray-600);line-height:1.85;margin-bottom:14px;}
+.about-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:32px 0;padding:24px 0;border-top:1px solid var(--gray-200);border-bottom:1px solid var(--gray-200);}
+.stat-item{text-align:center;}
+.stat-num{display:block;font-size:1.9rem;font-weight:900;color:var(--blue-700);letter-spacing:-0.02em;line-height:1;margin-bottom:5px;}
+.stat-label{font-size:11.5px;font-weight:600;color:var(--gray-600);}
+.values-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+.value-card{background:var(--blue-50);border-radius:var(--radius);padding:28px 22px;border-left:4px solid var(--blue-700);}
+.value-card h3{font-size:15px;font-weight:800;color:var(--blue-900);margin-bottom:8px;}
+.value-card p{font-size:13.5px;font-weight:500;color:var(--gray-600);line-height:1.7;}
+.visi-misi{display:grid;grid-template-columns:1fr 1fr;gap:28px;}
+.visi-box{background:var(--blue-800);border-radius:var(--radius);padding:36px;color:var(--white);}
+.misi-box{background:var(--white);border:1px solid var(--gray-200);border-radius:var(--radius);padding:36px;}
+.box-tag{font-size:11px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;margin-bottom:12px;}
+.visi-box .box-tag{color:var(--blue-100);}
+.misi-box .box-tag{color:var(--blue-700);}
+.visi-box h3{font-size:1.2rem;font-weight:800;line-height:1.35;margin-bottom:14px;}
+.visi-box p{font-size:14px;font-weight:500;color:rgba(255,255,255,0.75);line-height:1.75;}
+.misi-list{display:flex;flex-direction:column;gap:12px;}
+.misi-list li{display:flex;gap:12px;font-size:14px;font-weight:500;color:var(--gray-600);align-items:flex-start;}
+.misi-num{font-size:13px;font-weight:800;color:var(--blue-700);flex-shrink:0;margin-top:1px;}
+.cta-banner-solid{background:linear-gradient(135deg,var(--blue-900) 0%,var(--blue-700) 100%);padding:72px 0;text-align:center;}
+.cta-banner-solid h2{font-size:clamp(1.7rem,3vw,2.3rem);font-weight:900;color:var(--white);letter-spacing:-0.02em;margin-bottom:12px;}
+.cta-banner-solid p{font-size:16px;font-weight:500;color:rgba(255,255,255,0.75);margin-bottom:32px;}
+.btn-white{display:inline-block;background:var(--white);color:var(--blue-700);padding:14px 32px;border-radius:8px;font-size:14px;font-weight:800;letter-spacing:0.04em;transition:transform var(--tr),box-shadow var(--tr);}
+.btn-white:hover{transform:translateY(-2px);box-shadow:0 10px 28px rgba(0,0,0,0.18);}
+@media(max-width:900px){.about-grid{grid-template-columns:1fr;gap:80px;}.about-img-side{max-width:480px;margin:0 auto;}.about-badge-float{left:-12px;}.visi-misi{grid-template-columns:1fr;}.values-grid{grid-template-columns:1fr 1fr;}}
+@media(max-width:580px){.values-grid{grid-template-columns:1fr;}.about-img-secondary{display:none;}}
+</style>
+</head>
+<body>
+<nav class="navbar solid" id="navbar">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo"><img src="logo.png" alt="Interviro"><span class="nav-logo-text">Interviro</span></a>
+    <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html">Beranda</a></li>
+      <li><a href="tentang.html" class="active">Tentang Kami</a></li>
+      <li class="nav-dropdown"><a href="layanan.html">Layanan &#8964;</a>
+        <div class="nav-dropdown-menu">
+          <a href="layanan.html#amdal">AMDAL</a><a href="layanan.html#ukl-upl">UKL/UPL</a>
+          <a href="layanan.html#delh">DELH/DPLH</a><a href="layanan.html#andalalin">ANDALALIN</a>
+        </div>
+      </li>
+      <li><a href="blog.html">Blog</a></li><li><a href="kontak.html">Kontak</a></li>
+    </ul>
+    <a href="https://wa.me/628123456789" target="_blank" class="nav-cta">Konsultasi Gratis</a>
+  </div>
+</nav>
+
+<section class="page-hero">
+  <div class="container">
+    <div class="section-tag">Tentang Kami</div>
+    <h1>PT. Interviro Pacific Indonesia</h1>
+    <p>Mitra terpercaya Anda dalam menghadapi tantangan perizinan lingkungan di Indonesia.</p>
+  </div>
+</section>
+
+<section class="section-pad">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-img-side" data-fade>
+        <div class="dot-grid"></div>
+        <div class="about-badge-float"><span class="about-badge-num">12+</span><span class="about-badge-label">Tahun Berpengalaman</span></div>
+        <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=800&q=80" alt="Tim Interviro" class="about-img-main">
+        <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=600&q=80" alt="Konsultasi" class="about-img-secondary">
+      </div>
+      <div data-fade data-delay="150">
+        <div class="section-tag">Profil Perusahaan</div>
+        <h2 class="section-title">Siapa <span>Kami?</span></h2>
+        <p class="about-desc">PT. Interviro Pacific Indonesia adalah perusahaan konsultan perizinan lingkungan yang berdiri sejak lebih dari satu dekade lalu. Kami hadir untuk membantu perusahaan dan investor dalam memenuhi kewajiban regulasi lingkungan hidup sesuai peraturan perundang-undangan yang berlaku di Indonesia.</p>
+        <p class="about-desc">Dengan tim tenaga ahli bersertifikat resmi dari Kementerian Lingkungan Hidup dan Kehutanan (KLHK), kami memberikan layanan konsultasi dan penyusunan dokumen lingkungan yang akurat, komprehensif, dan tepat waktu.</p>
+        <div class="about-stats">
+          <div class="stat-item"><span class="stat-num">500+</span><span class="stat-label">Proyek Selesai</span></div>
+          <div class="stat-item"><span class="stat-num">200+</span><span class="stat-label">Klien Aktif</span></div>
+          <div class="stat-item"><span class="stat-num">34</span><span class="stat-label">Provinsi Terlayani</span></div>
+        </div>
+        <a href="https://wa.me/628123456789" target="_blank" class="btn-primary">Konsultasi Sekarang</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section-pad bg-light">
+  <div class="container">
+    <div class="section-header" data-fade>
+      <div class="section-tag">Visi dan Misi</div>
+      <h2 class="section-title">Arah dan <span>Tujuan Kami</span></h2>
+    </div>
+    <div class="visi-misi" data-fade>
+      <div class="visi-box">
+        <div class="box-tag">Visi</div>
+        <h3>Menjadi konsultan perizinan lingkungan terkemuka dan terpercaya di Asia Tenggara.</h3>
+        <p>Kami berkomitmen untuk terus berkembang dan memberikan solusi lingkungan yang berkelanjutan, mendukung pertumbuhan industri yang bertanggung jawab dan ramah lingkungan.</p>
+      </div>
+      <div class="misi-box">
+        <div class="box-tag">Misi</div>
+        <ul class="misi-list">
+          <li><span class="misi-num">01</span>Memberikan layanan konsultasi lingkungan yang profesional, akurat, dan efisien.</li>
+          <li><span class="misi-num">02</span>Mendampingi klien dalam setiap tahap proses perizinan hingga terbitnya dokumen resmi.</li>
+          <li><span class="misi-num">03</span>Mendorong industri Indonesia untuk beroperasi sesuai standar lingkungan nasional dan internasional.</li>
+          <li><span class="misi-num">04</span>Terus berinovasi dalam metode penyusunan dokumen lingkungan yang relevan dan terkini.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section-pad">
+  <div class="container">
+    <div class="section-header" data-fade>
+      <div class="section-tag">Nilai Kami</div>
+      <h2 class="section-title">Yang Kami <span>Pegang Teguh</span></h2>
+    </div>
+    <div class="values-grid">
+      <div class="value-card" data-fade><h3>Integritas</h3><p>Kami menjunjung tinggi kejujuran dan transparansi dalam setiap proses yang kami lakukan bersama klien.</p></div>
+      <div class="value-card" data-fade data-delay="80"><h3>Profesionalisme</h3><p>Setiap pekerjaan ditangani oleh tenaga ahli bersertifikat dengan standar mutu yang tinggi dan terukur.</p></div>
+      <div class="value-card" data-fade data-delay="160"><h3>Komitmen</h3><p>Kami berkomitmen untuk menyelesaikan setiap proyek tepat waktu dan sesuai dengan kebutuhan klien.</p></div>
+      <div class="value-card" data-fade><h3>Inovasi</h3><p>Kami terus memperbarui pengetahuan dan metode kerja agar selalu relevan dengan regulasi terkini.</p></div>
+      <div class="value-card" data-fade data-delay="80"><h3>Keberlanjutan</h3><p>Setiap solusi berorientasi pada keseimbangan antara kebutuhan industri dan kelestarian lingkungan.</p></div>
+      <div class="value-card" data-fade data-delay="160"><h3>Kolaborasi</h3><p>Kami percaya bahwa hasil terbaik lahir dari kerja sama yang erat antara tim kami dan klien.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-banner-solid">
+  <div class="container" data-fade>
+    <h2>Bergabunglah Bersama 200+ Klien Kami</h2>
+    <p>Percayakan kebutuhan perizinan lingkungan bisnis Anda kepada tim ahli kami.</p>
+    <a href="https://wa.me/628123456789" target="_blank" class="btn-white">Konsultasi Sekarang</a>
+  </div>
+</section>
+
+<footer class="footer"><div class="container">
+  <div class="footer-grid">
+    <div><div class="footer-logo-wrap"><img src="logo.png" alt="Interviro"><span class="footer-logo-text">Interviro</span></div>
+    <p class="footer-desc">PT. Interviro Pacific Indonesia adalah mitra terpercaya dalam pengurusan perizinan lingkungan di seluruh Indonesia.</p>
+    <a href="mailto:kontak@interviro.com" class="footer-email"><span class="footer-email-icon">✉</span>kontak@interviro.com</a></div>
+    <div class="footer-nav"><h4>Navigasi</h4><ul><li><a href="index.html">Beranda</a></li><li><a href="tentang.html">Tentang Kami</a></li><li><a href="layanan.html">Layanan</a></li><li><a href="blog.html">Blog</a></li><li><a href="kontak.html">Kontak</a></li></ul></div>
+    <div class="footer-nav"><h4>Layanan</h4><ul><li><a href="layanan.html#amdal">AMDAL</a></li><li><a href="layanan.html#ukl-upl">UKL/UPL</a></li><li><a href="layanan.html#delh">DELH/DPLH</a></li><li><a href="layanan.html#pertek-ipal">Pertek IPAL</a></li><li><a href="layanan.html#andalalin">ANDALALIN</a></li></ul></div>
+    <div class="footer-newsletter"><h4>Newsletter</h4><p>Dapatkan update regulasi dan info perizinan terbaru langsung di email Anda.</p>
+    <div class="nl-form"><input type="email" placeholder="Masukkan email Anda"><button type="button">Berlangganan</button></div></div>
+  </div>
+  <div class="footer-bottom"><p>&copy; 2025 PT. Interviro Pacific Indonesia. All rights reserved.</p>
+  <div class="footer-bottom-links"><a href="#">Kebijakan Privasi</a><a href="#">Syarat dan Ketentuan</a></div></div>
+</div></footer>
+
+<a href="https://wa.me/628123456789" target="_blank" class="wa-float"><div class="wa-pulse"></div>
+<svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></a>
+<script src="main.js"></script>
+</body></html>
